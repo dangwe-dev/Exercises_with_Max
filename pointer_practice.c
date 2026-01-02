@@ -15,9 +15,19 @@ struct vector
 	float Y;
 };
 
-int CreateVector(float x, float y)
+struct vector* CreateVector(float X, float Y)
 {
- 
+	struct vector* DynamicPtrVector = malloc(sizeof(struct vector));
+
+	if (DynamicPtrVector != NULL)
+	{	
+		DynamicPtrVector->X = X;
+		DynamicPtrVector->Y = Y;
+
+    }
+
+
+	return DynamicPtrVector;
 }
 
 int main()
@@ -103,8 +113,16 @@ int main()
 
 	printf("\nThe vector values printed are \n%.2f and %.2f", MyVector.X, MyVector.Y);
 
-	//Exercise 8 
+	//Exercise 8 Create a function from the "struct" create at the previous exercise. This function must...
+	// -Allocate dynamic memory for a new vector
+	// -Have an 'X' and a 'Y' Value as parameters.
+	// -Return a pointer towards the vector.
+	
+	struct vector* VectorEx8 = CreateVector(11.f, 22.f);
 
+	printf("\nThe Vector values printed with a pointer are \nX:%.2f and Y:%.2f", VectorEx8->X, VectorEx8->Y);
+
+	free(VectorEx8);
 
 
 	return 0;
